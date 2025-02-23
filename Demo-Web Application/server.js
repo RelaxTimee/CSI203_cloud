@@ -106,10 +106,22 @@ app.get('/files', async (req, res) => {
     }
 });
 
-app.get('/files/:filename', (req, res) => {
+app.get('/files/:filename', async (req, res) => {
     const filename = req.params.filename;
     const filePath = path.join(__dirname, 'uploads', filename);
-    res.download(filePath);
+
+    try {
+        // ตรวจสอบว่าไฟล์มีอยู่จริง
+        await fs.access(filePath);
+        
+        // ตั้งค่า header และส่งไฟล์ให้ client ดาวน์โหลด
+        res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+        res.setHeader('Content-Type', 'application/octet-stream');
+        res.download(filePath);
+    } catch (err) {
+        // หากไฟล์ไม่พบหรือเกิดข้อผิดพลาด
+        res.status(404).json({ success: false, message: 'File not found' });
+    }
 });
 
 app.delete('/files/:filename', async (req, res) => {
