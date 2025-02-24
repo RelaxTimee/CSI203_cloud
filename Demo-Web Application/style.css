@@ -3,9 +3,19 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(45deg, #ffffff, #6541B9);
+    background: linear-gradient(45deg, #6541B9, #ffffff );
+    background-size: 200% 200%;
     font-family: Arial, sans-serif;
+    animation: gradientBG 6s ease infinite;
 }
+
+/* เพิ่ม Animation ให้พื้นหลัง */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 .container {
     display: flex;
     width: 850px;

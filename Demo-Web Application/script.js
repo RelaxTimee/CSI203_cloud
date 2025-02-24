@@ -105,13 +105,45 @@ function previewFile() {
             reader.onload = (e) => {
                 filePreview.style.display = 'inline';
                 filePreview.src = e.target.result;
+                fileNamePreview.textContent = `File name: ${file.name}`; // แสดงชื่อไฟล์ใต้ภาพ
             };
             reader.readAsDataURL(file);
+        } else if (file.type === 'application/pdf') {
+    
+            //Preview PDF   
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const pdfData = new Uint8Array(e.target.result);
+                pdfjsLib.getDocument(pdfData).promise.then(pdf => {
+                    // open 1st page
+                    pdf.getPage(1).then(page => {
+                        const scale = 1.5;
+                        const viewport = page.getViewport({ scale: scale });
+
+                        // canvas preview 
+                        const canvas = document.createElement('canvas');
+                        const context = canvas.getContext('2d');
+                        canvas.width = viewport.width;
+                        canvas.height = viewport.height;
+
+                        page.render({
+                            canvasContext: context,
+                            viewport: viewport
+                        }).promise.then(() => {
+                            filePreview.style.display = 'inline';
+                            filePreview.src = canvas.toDataURL();
+                            fileNamePreview.textContent = `File name: ${file.name}`; // แสดงชื่อไฟล์ใต้ภาพ
+                        });
+                    });
+                });
+            };
+            reader.readAsArrayBuffer(file);
         } else {
             fileNamePreview.textContent = `File selected: ${file.name}`;
         }
     }
 }
+
 
 // Upload file function
 async function uploadFile() {

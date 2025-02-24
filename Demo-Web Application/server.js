@@ -43,7 +43,7 @@ wss.on('connection', (ws) => {
     ws.on('message', (message) => {
         console.log('Received message: Welcome to Demo Web Application!');
     });
-    ws.send('Welcome to the WebSocket Server!');
+    ws.send('Welcome to My Cloud Storage!');
 });
 
 // เก็บข้อมูลผู้ใช้และ token
