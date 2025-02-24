@@ -28,10 +28,11 @@ const storage = multer.diskStorage({
     destination: (req, file, cb) => cb(null, 'uploads/'),
     filename: (req, file, cb) => {
         const timestamp = getShortDate();
+        const randomString = crypto.randomBytes(4).toString('hex'); //สร้าง random ชื่อให้ทับไฟล์เดียวกันได้
         const originalName = file.originalname;
         const fileExtension = path.extname(originalName);
         const baseName = path.basename(originalName, fileExtension);
-        const newFileName = `${timestamp}-${baseName}${fileExtension}`;
+        const newFileName = `${timestamp}-${randomString}-${baseName}${fileExtension}`;
         cb(null, newFileName);
     }
 });

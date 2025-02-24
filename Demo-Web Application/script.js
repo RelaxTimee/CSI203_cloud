@@ -236,7 +236,7 @@ async function downloadFile(filename) {
 
 // Delete file function
 async function deleteFile(filename) {
-    if (!confirm(`Are you sure you want to delete ${filename}?`)) return;
+    if (!confirm(`Confirm Delete this file ${filename}?`)) return;
 
     const data = await sendRequest(`http://localhost:3000/files/${filename}`, 'DELETE');
     if (data.success) {
