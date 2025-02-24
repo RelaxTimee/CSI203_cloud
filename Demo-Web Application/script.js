@@ -151,8 +151,6 @@ async function fetchFiles() {
                 <div id="buttonContainer">
                     <button class="download" onclick="downloadFile('${file}')">Download</button>
                     <button class="delete" onclick="deleteFile('${file}')">Delete</button>
-                    <br>
-                    <hr>
                 </div>
             `;
             fileList.appendChild(li);

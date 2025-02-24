@@ -25,16 +25,16 @@
 
     <div class="container">
         <div id="fileSection">
-            <h2>Upload File</h2>
-            <label for="fileInput" class="custom-file-upload" onchange="previewFile()">Choose File</label>
+            <h2 >Upload File</h2>
+            <label for="fileInput" class="custom-file-upload-choose" onchange="previewFile()">Choose File</label>
             <input type="file" id="fileInput"  onchange="previewFile()" style="display: none;" />
             <button class="custom-file-upload" onclick="uploadFile()">Upload</button>
             <div id="filePreviewContainer">
                 <p id="fileNamePreview"></p>
                 <img id="filePreview" style="display: none;" />
             </div>
-            
-            <hr>
+            <br>
+            <br>
             <h2 class="line">File Storage</h2>
             <ul id="fileList" class="file-list"></ul>
         </div>

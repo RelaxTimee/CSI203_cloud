@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    /* font-family: Georgia, 'Times New Roman', Times, serif; */
 }
 
 img {
@@ -13,7 +13,7 @@ img {
 
 body {
     font-family: "Poppins", sans-serif;
-    background-color: #121212;
+    background-color: #272626;
     color: white;
     display: flex;
     height: 100vh;
@@ -96,7 +96,7 @@ body {
     background: linear-gradient(135deg, #1e1e1e, #292929);
     padding: 25px;
     border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 1px 4px #6541B9;
     text-align: center;
     transition: transform 0.3s;
 }
@@ -122,10 +122,27 @@ h2 {
     font-size: 16px;
     transition: background 0.3s, transform 0.2s;
     margin-bottom: 1rem;
+    width: 300px;
+}
+.custom-file-upload-choose {
+    display: inline-block;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #6a0dad, #8b5cf6);
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s, transform 0.2s;
+    margin-bottom: 1rem;
+    width: 300px;
 }
 
 .custom-file-upload:hover {
     background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+    transform: scale(1.05);
+}
+.custom-file-upload-choose:hover {
+    background: linear-gradient(135deg, #8652ff, #a78bfa);
     transform: scale(1.05);
 }
 
@@ -190,6 +207,13 @@ button.delete:hover {
 .file-list li:hover {
     background-color: #3a3a3a;
     transform: scale(1.02);
+}
+
+/* ปรับขนาดปุ่มให้มีขนาดเท่ากัน */
+button.download, button.delete {
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 14px;
 }
 
 /* Responsive */
